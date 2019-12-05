@@ -1,37 +1,81 @@
-# FedapayCheckout
+# FedaPay Angular
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.15.
+FedaPay CheckoutJs integration for Angular projects.
+
+## Install
+From a command terminal type the following
+```
+npm install fedapay-angular --save
+```
+
+## Inject
+Make fedapay-angular available throughout your app
+
+```typescript
+import { NgModule } from "@angular/core";
+import { FedaPayCheckoutModule } from 'fedapay-checkout';
+
+@NgModule({
+  imports: [ FedaPayCheckoutModule.forRoot({ public_key: 'pk_sandbox_XXXXXX' }) ]
+}) export class AppModule {}
+```
+
+> Please note, you only use `.forRoot()` on your base app module
+>> This ONLY matters if you need to support lazy loading via loadChildren()
 
 ## Usage
 
-```ts
+```typescript
+import { Component } from '@angular/core';
+import { CheckoutOptions } from 'fedapay-checkout';
 
-//app.module.ts
-import {FedaPayCheckoutModule} from 'fedapay-checkout';
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+    checkoutButtonOptions: CheckoutOptions = {
+        transaction: {
+            amount: 100,
+            description: 'Airtime'
+        },
+        currency: {
+            iso: 'XOF'
+        },
+        button: {
+            class: 'btn btn-primary',
+            text: 'Payer 100 FCFA'
+        },
+        onComplete(resp) {
+            const FedaPay = window['FedaPay'];
+            if (resp.reason === FedaPay.DIALOG_DISMISSED) {
+                alert('Vous avez fermé la boite de dialogue');
+            } else {
+                alert('Transaction terminée: ' + resp.reason);
+            }
 
-//in imports @NgModule property, for sandbox or live account configuration
-FedaPayCheckoutModule.forRoot({environment :"sandbox"})
+            console.log(resp.transaction);
+        }
+    };
 
-//app.component.ts
-this.payWidget = {
-    url: 'https://sandbox-checkout.fedapay.com',
-    public_key: 'YOUR_PUBLIC_KEY_HERE',
-    transaction: {
-        amount: 1000,
-        description: 'Airtime'
-    },
-    currency: {
-        iso: 'XOF'
-    },
-    button: {
-      text: "Pay 1.000 F CFA"
-    },
-};
+    checkoutEmbedOptions: CheckoutOptions = {
+        transaction: {
+            amount: 100,
+            description: 'Airtime'
+        },
+        currency: {
+            iso: 'XOF'
+        }
+    };
+}
+```
+In your component's view
 
+```html
+<!--- app.component.html -->
+ <button [fedaCheckoutOptions]="checkoutButtonOptions"> Click on me </button>
 
-//app.component.html
- <button [fedaCheckoutOptions] = "payWidget"> Click on me </button>
-
-  <div [fedaCheckoutOptions] = "payWidget_container"
-    style="height : 500px; width: 500px; background-color: #eee">
-  </div>
+<div [fedaCheckoutOptions]="checkoutEmbedOptions" style="height : 500px; width: 500px; background-color: #eee">
+</div>
+```
