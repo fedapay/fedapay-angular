@@ -1,0 +1,43 @@
+import { Component } from '@angular/core';
+import CheckoutOptions from '../../projects/fedapay-checkout/src/lib/checkout-options';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+    checkoutButtonOptions: CheckoutOptions = {
+        transaction: {
+            amount: 100,
+            description: 'Airtime'
+        },
+        currency: {
+            iso: 'XOF'
+        },
+        button: {
+            class: 'btn btn-primary',
+            text: 'Payer 100 FCFA'
+        },
+        onComplete(resp) {
+            const FedaPay = window['FedaPay'];
+            if (resp.reason === FedaPay.DIALOG_DISMISSED) {
+                alert('Vous avez fermé la boite de dialogue');
+            } else {
+                alert('Transaction terminée: ' + resp.reason);
+            }
+
+            console.log(resp.transaction);
+        }
+    };
+
+    checkoutEmbedOptions: CheckoutOptions = {
+        transaction: {
+            amount: 100,
+            description: 'Airtime'
+        },
+        currency: {
+            iso: 'XOF'
+        }
+    };
+}
