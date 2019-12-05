@@ -17,7 +17,8 @@ import { FedaPayCheckoutModule } from 'fedapay-checkout';
 
 @NgModule({
   imports: [ FedaPayCheckoutModule.forRoot({ public_key: 'pk_sandbox_XXXXXX' }) ]
-}) export class AppModule {}
+})
+export class AppModule {}
 ```
 
 > Please note, you only use `.forRoot()` on your base app module
