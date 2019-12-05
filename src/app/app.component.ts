@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import CheckoutOptions from '../../projects/fedapay-checkout/src/lib/checkout-options';
+import { CheckoutOptions } from '../../projects/fedapay-checkout/src/public_api';
 
 @Component({
     selector: 'app-root',
