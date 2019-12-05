@@ -1,4 +1,4 @@
-export default interface CheckoutOptions {
+export interface CheckoutOptions {
     environment?: 'live' | 'production' | 'test' | 'sandbox' | 'dev' | 'local';
     url?: string;
     public_key?: string;
