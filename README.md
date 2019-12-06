@@ -13,7 +13,7 @@ Make fedapay-angular available throughout your app
 
 ```typescript
 import { NgModule } from "@angular/core";
-import { FedaPayCheckoutModule } from 'fedapay-checkout';
+import { FedaPayCheckoutModule } from 'fedapay-angular';
 
 @NgModule({
   imports: [ FedaPayCheckoutModule.forRoot({ public_key: 'pk_sandbox_XXXXXX' }) ]
@@ -28,7 +28,7 @@ export class AppModule {}
 
 ```typescript
 import { Component } from '@angular/core';
-import { CheckoutOptions } from 'fedapay-checkout';
+import { CheckoutOptions } from 'fedapay-angular';
 
 @Component({
     selector: 'app-root',
@@ -77,6 +77,7 @@ In your component's view
 <!--- app.component.html -->
  <button [fedaCheckoutOptions]="checkoutButtonOptions"> Click on me </button>
 
-<div [fedaCheckoutOptions]="checkoutEmbedOptions" style="height : 500px; width: 500px; background-color: #eee">
+<div [fedaCheckoutOptions]="checkoutEmbedOptions" [embeded]="true"
+  style="height : 500px; width: 500px; background-color: #eee">
 </div>
 ```
