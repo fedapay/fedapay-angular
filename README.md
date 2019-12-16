@@ -10,7 +10,7 @@ npm install fedapay-angular --save
 
 ## Add the CheckoutJs script
 Add the checkout.js script in your index.html file.
-```
+```html
 <!doctype html>
 <html lang="en">
 <head>
