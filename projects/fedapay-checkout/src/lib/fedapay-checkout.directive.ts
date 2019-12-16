@@ -34,6 +34,10 @@ export class FedaPayCheckoutDirective implements OnInit {
 
     initFedaPay() {
         const FedaPay = window['FedaPay'];
+
+        if (this.config.app_id) {
+            this.options.site_domain = this.config.app_id;
+        }
         const options = Object.assign(this.config, this.options);
 
         if (this.embeded) {

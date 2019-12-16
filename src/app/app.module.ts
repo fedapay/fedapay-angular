@@ -11,7 +11,10 @@ import { FedaPayCheckoutModule } from '../../projects/fedapay-checkout/src/lib/f
   ],
   imports: [
     BrowserModule,
-    FedaPayCheckoutModule.forRoot({ public_key: 'pk_sandbox_XXXXXX' })
+    FedaPayCheckoutModule.forRoot({
+        public_key: 'pk_sandbox_XXXXXX',
+        app_id: 'ionic.app'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

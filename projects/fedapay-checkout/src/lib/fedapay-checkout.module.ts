@@ -6,6 +6,7 @@ export interface FedaPayCheckoutModuleConfig {
     url?: string;
     public_key?: string;
     locale?: 'en' | 'fr';
+    app_id?: string;
 }
 
 @NgModule({
