@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:lib": "ng-packagr -p ./projects/fedapay-checkout/ng-package.json"
+    "copy-readme": "cp README.md dist/fedapay-checkout",
+    "build:lib": "ng-packagr -p ./projects/fedapay-checkout/ng-package.json && npm run copy-readme"
   },
   "private": true,
   "dependencies": {

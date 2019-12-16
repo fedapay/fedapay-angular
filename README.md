@@ -45,6 +45,18 @@ export class AppModule {}
 > Please note, you only use `.forRoot()` on your base app module
 >> This ONLY matters if you need to support lazy loading via loadChildren()
 
+For Ionic applications, you will need to add your app ID.
+
+```typescript
+import { NgModule } from "@angular/core";
+import { FedaPayCheckoutModule } from 'fedapay-angular';
+
+@NgModule({
+  imports: [ FedaPayCheckoutModule.forRoot({ public_key: 'pk_sandbox_XXXXXX', app_id: 'org.ionic.myapp' }) ]
+})
+export class AppModule {}
+```
+
 ## Usage
 
 ```typescript
