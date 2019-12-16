@@ -14,7 +14,7 @@ export interface FedaPayCheckoutModuleConfig {
   exports: [FedaPayCheckoutDirective],
 })
 export class FedaPayCheckoutModule {
-  static forRoot(config : FedaPayCheckoutModuleConfig = {}) : ModuleWithProviders {
+  static forRoot(config: FedaPayCheckoutModuleConfig = {}): ModuleWithProviders {
     return {
       ngModule: FedaPayCheckoutModule,
       providers: [

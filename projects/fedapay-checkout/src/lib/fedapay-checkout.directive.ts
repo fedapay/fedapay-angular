@@ -2,6 +2,7 @@ import { Input, ElementRef, OnInit, Directive, Inject } from '@angular/core';
 import { FedaPayCheckoutModuleConfig } from './fedapay-checkout.module';
 
 @Directive({
+    // tslint:disable-next-line:directive-selector
     selector: '[fedaCheckoutOptions]'
 })
 export class FedaPayCheckoutDirective implements OnInit {
@@ -15,7 +16,7 @@ export class FedaPayCheckoutDirective implements OnInit {
     /**
      * Set if the element should be for embed or not
      */
-    @Input('embeded') embeded = false;
+    @Input() embeded = false;
 
     constructor(
         private elementRef: ElementRef,
