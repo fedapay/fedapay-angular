@@ -7,6 +7,9 @@ import { CheckoutOptions } from '../../projects/fedapay-checkout/src/public_api'
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+    title !: string; // Define the title property
+
     checkoutButtonOptions: CheckoutOptions = {
         transaction: {
             amount: 100,
@@ -19,8 +22,8 @@ export class AppComponent {
             class: 'btn btn-primary',
             text: 'Payer 100 FCFA'
         },
-        onComplete(resp) {
-            const FedaPay = window['FedaPay'];
+        onComplete(resp: any) {
+            const FedaPay = (window as any) ['FedaPay'];
             if (resp.reason === FedaPay.DIALOG_DISMISSED) {
                 alert('Vous avez fermé la boite de dialogue');
             } else {
