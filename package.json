@@ -1,6 +1,6 @@
 {
-  "name": "fedapay-angular",
-  "version": "0.0.0",
+  "name": "fedapay-checkout-angular-plugin",
+  "version": "1.0.5",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "copy-readme": "cp README.md dist/fedapay-checkout",
     "serve:ssr:fedapay-Angular": "node dist/fedapay-angular/server/server.mjs",
     "build:lib": "ng-packagr -p ./projects/fedapay-checkout/ng-package.json && npm run copy-readme"
   },
