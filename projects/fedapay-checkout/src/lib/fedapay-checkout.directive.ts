@@ -26,7 +26,7 @@ export class FedaPayCheckoutDirective implements OnInit {
     }
 
     ngOnInit(): void {
-        if (typeof window['FedaPay'] === 'undefined') {
+        if (typeof (window as any)['FedaPay'] === 'undefined') {
             console.error('checkout.min.js script need to be included!');
         } else {
             this.initFedaPay();
@@ -34,7 +34,7 @@ export class FedaPayCheckoutDirective implements OnInit {
     }
 
     initFedaPay() {
-        const FedaPay = window['FedaPay'];
+        const FedaPay = (window as any)['FedaPay'];
 
         if (this.config.app_id) {
             this.options.site_domain = this.config.app_id;
